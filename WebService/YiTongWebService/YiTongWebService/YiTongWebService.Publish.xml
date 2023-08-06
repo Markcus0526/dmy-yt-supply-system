@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="E:\2014\15_YiTong\Result\Webservice" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="WebService" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="bin/Newtonsoft.Json.dll" publishTime="11/21/2013 21:04:20" />
+    <file relUrl="bin/YiTongWebService.dll" publishTime="09/30/2014 17:13:55" />
+    <file relUrl="JSON/Newtonsoft.Json.dll" publishTime="11/21/2013 21:04:20" />
+    <file relUrl="bin/YiTongWebService.pdb" publishTime="09/30/2014 17:13:55" />
+    <file relUrl="Web.config" publishTime="09/30/2014 17:14:11" />
+    <file relUrl="Service.svc" publishTime="07/29/2014 19:57:54" />
+    <file relUrl="ConnStrings.config" publishTime="09/30/2014 17:06:40" />
+  </publishProfile>
+</publishData>

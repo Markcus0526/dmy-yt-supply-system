@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="YiTongDB">
+  <DataContextMoniker Name="/YiTongDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="b2affc03-8d2d-4278-a39a-3fc99ba0e08d" absoluteBounds="0.75, 0.75, 2, 1.6709212239583331">
+      <DataClassMoniker Name="/YiTongDBDataContext/tbl_admin" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4c67592c-5e2d-422c-af6e-703dcee88348" absoluteBounds="0.765, 1.21, 1.9700000000000002, 1.1109212239583333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="33381cc0-5222-4eb6-86cb-297f06ccf7be" absoluteBounds="3.75, 0.75, 2, 1.847841796875">
+      <DataClassMoniker Name="/YiTongDBDataContext/tbl_post" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f9770669-dd89-48b6-84eb-d6a47070aad0" absoluteBounds="3.765, 1.21, 1.9700000000000002, 1.287841796875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4e1cc650-e5ed-4a7c-aea6-89ada8008a11" absoluteBounds="0.75, 3.75, 2, 1.6709212239583327">
+      <DataClassMoniker Name="/YiTongDBDataContext/tbl_advert" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e2feb125-7b21-4c18-8a6f-196ba0c23b1a" absoluteBounds="0.765, 4.21, 1.9700000000000002, 1.1109212239583333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ad76abe9-8363-45f7-842d-614f8042e4a3" absoluteBounds="3.75, 3.75, 2, 1.6709212239583327">
+      <DataClassMoniker Name="/YiTongDBDataContext/tbl_banner" />
+      <nestedChildShapes>
+        <elementListCompartment Id="705de275-9a20-49e0-b737-65b10e8abf0e" absoluteBounds="3.765, 4.21, 1.9700000000000002, 1.1109212239583333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="55405971-8ef5-4f85-8be4-0568efd53cf3" absoluteBounds="6.75, 0.75, 2, 1.3170800781250003">
+      <DataClassMoniker Name="/YiTongDBDataContext/tbl_env" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8d44e9be-0fb0-46a3-a1be-e7d324d6e888" absoluteBounds="6.765, 1.21, 1.9700000000000002, 0.757080078125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

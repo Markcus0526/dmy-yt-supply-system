@@ -1,0 +1,4 @@
+2014/7/29 10:42:12 - ImageHelper - ResizeAndCrop() - System.Runtime.InteropServices.ExternalException (0x80004005): A generic error occurred in GDI+.
+   at System.Drawing.Image.Save(String filename, ImageCodecInfo encoder, EncoderParameters encoderParams)
+   at System.Drawing.Image.Save(String filename, ImageFormat format)
+   at YiTongBackend.Models.Library.ImageHelper.ResizeAndCrop(String filepath, Decimal x, Decimal y, Decimal w, Decimal h, String category, String imagesize) in E:\Work\2014\15_YiTong\Source\Backend\YiTongBackend\YiTongBackend\Models\Library\ImageHelper.cs:line 154

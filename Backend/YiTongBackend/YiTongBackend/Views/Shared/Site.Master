@@ -1,0 +1,89 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8" />
+	<title>供销易通管理平台</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	<meta name="MobileOptimized" content="320">     
+	<link href="<%= ViewData["rootUri"] %>Content/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="<%= ViewData["rootUri"] %>Content/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="<%= ViewData["rootUri"] %>Content/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+    <link href="<%= ViewData["rootUri"] %>Content/css/style-metronic.css" rel="stylesheet" type="text/css"/>
+	<link href="<%= ViewData["rootUri"] %>Content/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="<%= ViewData["rootUri"] %>Content/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="<%= ViewData["rootUri"] %>Content/css/plugins.css" rel="stylesheet" type="text/css"/>
+	<link href="<%= ViewData["rootUri"] %>Content/css/themes/light.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="<%= ViewData["rootUri"] %>Content/css/custom.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="<%= ViewData["rootUri"] %>Content/icon/favicon.ico" />
+
+    <asp:ContentPlaceHolder ID="PageStyle" runat="server" />
+    
+    <script type="text/javascript">
+        var rootUri = "<%= ViewData["rootUri"] %>";
+    </script>
+</head>
+<body class="page-header-fixed page-sidebar-fixed">
+	<div class="header navbar navbar-inverse navbar-fixed-top">
+		<div class="header-inner">
+			<a class="navbar-brand">
+			    <img src="<%= ViewData["rootUri"] %>Content/img/logo.png" alt="logo" class="img-responsive" />
+			</a>
+			<div class="sidebar-toggler hidden-phone"></div>
+			<a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			    <img src="<%= ViewData["rootUri"] %>Content/img/menu-toggler.png" alt="" />
+			</a> 
+			<ul class="nav navbar-nav pull-right">
+				<li class="dropdown user">
+                    <%
+                        FormsIdentity fId = (FormsIdentity)HttpContext.Current.User.Identity;
+                        FormsAuthenticationTicket authTicket = fId.Ticket;
+                        
+                        string[] userdata = authTicket.UserData.Split(new char[] { '|' });
+                        string uid = userdata[0];
+                        string userid = userdata[1];
+
+                        string imgpath = "Content/img/avatar_small.jpg";
+                    %>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+					<img alt="" src="<%= ViewData["rootUri"] %><%=imgpath%>"/>
+					<span class="username"><%=userid%></span>
+					<i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="dropdown-menu">						
+						<li><a href="<%= ViewData["rootUri"] %>Account/LogOff"><i class="fa fa-key"></i> 注销</a></li>
+
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<div class="page-container">
+        <% Html.RenderPartial("LeftNavigation", ViewContext.ViewData); %>
+		<div class="page-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+		</div>
+	</div>
+	<!--[if lt IE 9]>
+	<script src="<%= ViewData["rootUri"] %>Content/plugins/respond.min.js"></script>
+	<script src="<%= ViewData["rootUri"] %>Content/plugins/excanvas.min.js"></script> 
+	<![endif]-->
+	<script src="<%= ViewData["rootUri"] %>Content/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+	<script src="<%= ViewData["rootUri"] %>Content/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+	<script src="<%= ViewData["rootUri"] %>Content/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>      
+	<script src="<%= ViewData["rootUri"] %>Content/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="<%= ViewData["rootUri"] %>Content/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript" ></script>
+	<script src="<%= ViewData["rootUri"] %>Content/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+	<script src="<%= ViewData["rootUri"] %>Content/plugins/jquery.blockui.min.js" type="text/javascript"></script>  
+	<script src="<%= ViewData["rootUri"] %>Content/plugins/jquery.cookie.min.js" type="text/javascript"></script>
+	<script src="<%= ViewData["rootUri"] %>Content/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
+
+    <asp:ContentPlaceHolder ID="PageScripts" runat="server" />
+</body>
+</html>

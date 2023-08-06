@@ -1,0 +1,100 @@
+package com.damytech.YiTong;
+
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.Rect;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import com.damytech.STData.STBanner;
+import com.damytech.utils.ResolutionSet;
+
+public class NotificationActivity extends Activity {
+    private WebView webData;
+    private ProgressBar prgsStatus = null;
+
+    private STBanner stBanner = new STBanner();
+
+    RelativeLayout mainLayout;
+    boolean bInitialized = false;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_notification);
+
+        stBanner = getIntent().getParcelableExtra("BANNER");
+        if (stBanner == null)
+            NotificationActivity.this.finish();
+
+        prgsStatus = (ProgressBar) findViewById(R.id.prgsNotification_Status);
+
+        webData = (WebView) findViewById(R.id.webNotification_Site);
+        webData.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url)
+            {
+                view.loadUrl(url);
+
+                return true;
+            };
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+
+                prgsStatus.setVisibility(View.GONE);
+            }
+        });
+        webData.setBackgroundColor(Color.parseColor("#FFFFFFFF"));
+        webData.getSettings().setLoadWithOverviewMode(true);
+        webData.getSettings().setUseWideViewPort(true);
+        webData.getSettings().setBuiltInZoomControls(false);
+        webData.getSettings().setDisplayZoomControls(false);
+        webData.getSettings().setSupportZoom(false);
+        webData.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+        webData.getSettings().setDefaultTextEncodingName("UTF-8");
+        webData.getSettings().setJavaScriptEnabled(true);
+        webData.getSettings().setDefaultZoom(WebSettings.ZoomDensity.CLOSE);
+        webData.loadUrl(stBanner.LinkURL);
+
+        mainLayout = (RelativeLayout)findViewById(R.id.rlNotificationBack);
+        mainLayout.getViewTreeObserver().addOnGlobalLayoutListener(
+                new ViewTreeObserver.OnGlobalLayoutListener() {
+                    public void onGlobalLayout() {
+                        if (bInitialized == false)
+                        {
+                            Rect r = new Rect();
+                            mainLayout.getLocalVisibleRect(r);
+                            ResolutionSet._instance.setResolution(r.width(), r.height());
+                            ResolutionSet._instance.iterateChild(findViewById(R.id.rlNotificationBack));
+                            bInitialized = true;
+                        }
+                    }
+                }
+        );
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+    }
+}
