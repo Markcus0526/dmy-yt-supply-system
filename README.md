@@ -1,45 +1,182 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+# YiTong Supply System
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+A comprehensive supply chain management system with Android mobile applications, web backend admin panel, and REST API services.
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+## 📋 Project Overview
 
----
+**YiTong** is a B2B/B2C supply chain management platform that provides:
+- Android mobile applications for supply management
+- Web-based admin dashboard for content management
+- REST API services for mobile-backend communication
 
-## Edit a file
+## 🏗️ Project Structure
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+```
+dmy-yt-supply-system/
+├── Android/                    # Main Android Application
+│   ├── src/com/damytech/       # Source code
+│   │   ├── YiTong/             # Main app activities
+│   │   ├── CommService/        # Communication services
+│   │   ├── HttpConn/           # HTTP client (AsyncHttpClient)
+│   │   ├── STData/             # Data models
+│   │   └── utils/              # Utility classes
+│   ├── res/                    # Android resources
+│   └── AndroidManifest.xml     # App manifest
+│
+├── AppWidget/                  # Android App Widget
+│   └── src/com/damytech/appwidget/
+│
+├── YiTongWidget/               # YiTong Widget Component
+│   └── src/com/damytech/yitongwidget/
+│
+├── Backend/YiTongBackend/      # ASP.NET MVC Web Backend
+│   ├── Controllers/            # MVC Controllers
+│   │   ├── AccountController.cs
+│   │   ├── AdvertController.cs
+│   │   ├── BannerController.cs
+│   │   ├── PostController.cs
+│   │   └── SettingController.cs
+│   ├── Models/                 # Data models & LINQ
+│   ├── Views/                  # Razor views
+│   └── Content/                # CSS, JS, images
+│
+├── WebService/YiTongWebService/  # WCF REST API Service
+│   └── YiTongWebService/
+│       ├── IService.cs         # Service interface
+│       ├── Service.svc.cs      # Service implementation
+│       └── ServiceModel/       # Service data models
+│
+├── Database/                   # Database files
+│   └── YiTong_log.rar          # SQLite database backup
+│
+└── Document/                   # Project documentation
+    ├── Contract/               # Contract documents
+    └── fromClient/             # Client-provided materials
+```
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+## 🔌 API Endpoints
 
----
+The WebService provides the following REST API endpoints (JSON):
 
-## Create a file
+| Endpoint | Description |
+|----------|-------------|
+| `GetNewVersion` | Check for app updates |
+| `GetAdvertList` | Get advertisement list |
+| `GetSiteAddr` | Get site addresses |
+| `GetBannerList` | Get banner images |
+| `GetSplashImgPath` | Get splash screen image path |
+| `GetPostList` | Get posts/articles list |
 
-Next, you’ll add a new file to this repository.
+### Example API Request
+```
+GET /Service.svc/GetAdvertList
+```
 
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
+## 💻 Technology Stack
 
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
+### Backend
+- **Framework**: ASP.NET MVC 4, WCF (Windows Communication Foundation)
+- **Language**: C# (.NET Framework)
+- **ORM**: LINQ to SQL
+- **Database**: SQLite
 
----
+### Web Service
+- **Framework**: WCF REST API
+- **Format**: JSON (using Newtonsoft.Json)
+- **Authentication**: Custom token-based
 
-## Clone a repository
+### Mobile Applications
+- **Platform**: Android (Java)
+- **HTTP Client**: AsyncHttpClient
+- **Image Loading**: Custom SmartImageView implementation
 
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
+### Frontend (Admin Panel)
+- **Framework**: Bootstrap 3
+- **JavaScript**: jQuery, DataTables
+- **CSS**: Metronic Admin Template
 
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
+## 🚀 Getting Started
 
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+### Prerequisites
+
+- Windows Server / IIS for Web Backend
+- .NET Framework 4.5+
+- Visual Studio 2012+ (for backend development)
+- Android Studio / Eclipse (for Android development)
+- SQLite database
+
+### Building the Backend
+
+1. Open `Backend/YiTongBackend/YiTongBackend.sln` in Visual Studio
+2. Restore NuGet packages
+3. Configure connection strings in `Web.config`
+4. Build and deploy to IIS
+
+### Building the Web Service
+
+1. Open `WebService/YiTongWebService/YiTongWebService.sln`
+2. Configure database connection in `Web.config`
+3. Build and deploy to IIS
+
+### Building Android Apps
+
+1. Import Android/ or YiTongWidget/ project to Android Studio
+2. Update `GlobalData.java` with your server URLs
+3. Build and install on Android device/emulator
+
+## 📱 Android Modules
+
+### Main App (Android/)
+- `MainActivity.java` - Main application entry
+- `WellComeActivity.java` - Splash screen
+- `NewsService.java` - Background news service
+- `NotificationActivity.java` - Push notification handling
+
+### App Widget (AppWidget/)
+- `WidgetProvider.java` - Home screen widget
+- `WidgetIntentReceiver.java` - Widget broadcast receiver
+
+### YiTong Widget (YiTongWidget/)
+- Similar to AppWidget with additional features
+
+## 🔧 Configuration
+
+### Backend Configuration
+Edit `ConnStrings.config` in both Backend and WebService projects:
+
+```xml
+<connectionStrings>
+    <add name="YiTongDB" connectionString="Data Source=...;Version=3;" />
+</connectionStrings>
+```
+
+### Android Configuration
+Update `GlobalData.java`:
+
+```java
+public class GlobalData {
+    public static String DOMAIN = "http://your-server.com";
+    public static String BASE_URL = DOMAIN + "/Service.svc/";
+}
+```
+
+## 📄 License
+
+This project contains proprietary code. All rights reserved.
+
+## 📅 Project History
+
+- **2014-07-24**: Initial contract documents
+- **2014-09-01**: Android v3.4 release
+- **2014-09-12**: Phase 2 development contract
+
+## 👥 Project Components
+
+| Component | Description |
+|-----------|-------------|
+| Main App | Supply chain management mobile app |
+| App Widget | Home screen widget for quick access |
+| YiTong Widget | Enhanced widget functionality |
+| Admin Panel | Web-based content management |
+| REST API | Mobile-backend communication |
+
